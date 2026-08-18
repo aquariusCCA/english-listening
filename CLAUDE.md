@@ -4,6 +4,20 @@
 
 使用者以繁體中文溝通，回覆一律使用繁體中文。
 
+## 狀態管理：一切以 repo 檔案為準
+
+- **不要使用機器本地的長期記憶（memory 目錄）。** 本 repo 會推上 GitHub 並在多台電腦之間同步，寫在單一機器 memory 的內容只有那台電腦看得到，而且失效時毫無徵兆。需要跨 session 記住的偏好與決策，一律寫進本檔（CLAUDE.md）。
+- **製卡紀錄以 repo 檔案為準**：CSV 檔案本身就是完整紀錄，README 目錄是索引。階段一挑字前應先查既有 CSV，避免重複出卡。
+- **複習排程與記憶狀態歸 Anki／AnkiWeb 管，不進 repo**，也不要試圖在 repo 裡追蹤。使用者以手機 AnkiDroid 複習，進度由 AnkiWeb 在裝置間同步。未來若需分析弱點字，再透過桌面版 Anki 的 AnkiConnect 外掛查詢複習統計，屆時才建對應機制。
+
+## Git 工作流程
+
+- 分支使用 `main`。
+- **開工先 `git pull`**：讀任何檔案之前先拉最新狀態。多電腦使用下，本機落後時會依過期內容運作且無從自覺。若 pull 前工作區有未 commit 的變更（上次 session 中斷的殘留），先補一個收尾 commit 再 pull——Git 會拒絕在可能被覆蓋的未提交變更上執行 pull。
+- **收尾 `git commit` + `git push`**：未 push 的 commit 對其他電腦等於不存在。使用者已授權收尾時主動 commit + push，無需逐次確認。
+- 尚未設定 remote 時只 commit，並提醒使用者設定 remote。
+- Commit message 一律用繁體中文，寫明「改了什麼、為什麼」。
+
 ## 整體流程（兩階段）
 
 ### 階段一：提取中難度字彙
