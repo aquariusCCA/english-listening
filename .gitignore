@@ -1,0 +1,18 @@
+# ── Obsidian：白名單制——.obsidian/ 預設全部不進 git，只放行共用設定與外掛 ──
+# workspace.json（視窗狀態）、graph.json（視圖狀態）等個人/易變檔一律被下面的萬用排除擋掉；
+# 與 grammar-in-charts、java-se-17-technical-guide 兩個 vault 採同一套規則，跨專案只需記一種心智模型。
+# 日後要同步 snippets/ 等新項目時，比照逐項放行。
+.obsidian/*
+!.obsidian/app.json
+!.obsidian/community-plugins.json
+!.obsidian/plugins/
+!.obsidian/appearance.json
+!.obsidian/themes/
+
+# ── 作業系統 ──
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ── 本機 Claude 設定（機器專屬） ──
+.claude/settings.local.json

@@ -8,7 +8,15 @@
 
 | 日期 | 主題 | 影片標題 | 連結 | CSV 檔案 | 卡片數 |
 |---|---|---|---|---|---:|
-| 2026-08-18 | 餐廳英文 | 🎧保母級聽力訓練｜輕鬆掌握餐廳對話，提升英語自信｜餐廳英文｜進步神速的英文訓練方法｜零基礎學英文｜輕鬆學英文｜一小時聽英文｜English Listening｜One Hour English | [YouTube](https://www.youtube.com/watch?v=muGybHP7eVs) | [2026-08-18-restaurant-english.csv](2026-08-18-restaurant-english.csv) | 88 |
+| 2026-08-18 | 餐廳英文 | 🎧保母級聽力訓練｜輕鬆掌握餐廳對話，提升英語自信｜餐廳英文｜進步神速的英文訓練方法｜零基礎學英文｜輕鬆學英文｜一小時聽英文｜English Listening｜One Hour English | [YouTube](https://www.youtube.com/watch?v=muGybHP7eVs) | [2026-08-18-restaurant-english.csv](cards/2026-08-18-restaurant-english.csv) | 88 |
+
+## 在 Obsidian 中閱讀
+
+本 repo 的根目錄同時就是一個 Obsidian vault。Obsidian →「開啟資料夾作為儲存庫」→ 選本資料夾即可。
+
+- `dashboard.base`：自動索引表，讀 `transcripts/` 各逐字稿的 frontmatter，新增影片後自動出現，不需手動維護。
+- `transcripts/`：逐字稿，上方 Properties 面板顯示影片標題、連結、日期與主題。
+- `cards/`：Anki CSV。Obsidian 開不了 CSV，這裡只是存放處，實際使用請匯入 Anki。
 
 ## 複習方式
 

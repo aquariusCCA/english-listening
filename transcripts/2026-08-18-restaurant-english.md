@@ -1,6 +1,9 @@
-# 🎧保母級聽力訓練｜輕鬆掌握餐廳對話，提升英語自信｜餐廳英文｜進步神速的英文訓練方法｜零基礎學英文｜輕鬆學英文｜一小時聽英文｜English Listening｜One Hour English - YouTube
-
-https://www.youtube.com/watch?v=muGybHP7eVs
+---
+title: "🎧保母級聽力訓練｜輕鬆掌握餐廳對話，提升英語自信｜餐廳英文｜進步神速的英文訓練方法｜零基礎學英文｜輕鬆學英文｜一小時聽英文｜English Listening｜One Hour English"
+url: https://www.youtube.com/watch?v=muGybHP7eVs
+date: 2026-08-18
+topic: 餐廳英文
+---
 
 - [00:00](https://www.youtube.com/watch?v=muGybHP7eVs&t=0s) one hour to improve your English listening skills 英文加中文配音 增强你的英文听力 do you have any tables i'd like to make a reservation for two i'd like to make a reservation for two can i see the menu please can i see the menu please
 - [01:07](https://www.youtube.com/watch?v=muGybHP7eVs&t=67s) what are today's specials what are today specials what are today's specials what are today's specials what do youcommend i'm allergic to peanuts does this dish contain any i'm allergic to peanuts does this dish contain any 我对花生过敏 这道菜含有花生吗 could you tell me more about this dish

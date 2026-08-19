@@ -7,13 +7,18 @@
 ## 檔案結構
 
 ```
-README.md                              目錄索引（專案入口）
-CLAUDE.md                              本規格文件
-YYYY-MM-DD-主題英文名.csv               Anki 字卡，放在根目錄
-transcripts/YYYY-MM-DD-主題英文名.md    對應的來源逐字稿
+README.md                             目錄索引（專案入口，GitHub 首頁會直接顯示）
+CLAUDE.md                             本規格文件
+dashboard.base                        Obsidian 端的自動索引
+.gitignore                            白名單制排除 .obsidian/ 易變檔
+cards/YYYY-MM-DD-主題英文名.csv        Anki 字卡
+transcripts/YYYY-MM-DD-主題英文名.md   對應的來源逐字稿
+.obsidian/                            Obsidian vault 設定（部分納入版控，見 .gitignore）
 ```
 
-逐字稿與其 CSV **同名**（僅副檔名不同），一眼即可對應。YouTube 原始檔名通常又長又含 emoji 與全形分隔符，在 Windows 上會觸發路徑長度問題、在 Git 輸出中也會被轉義成難讀的八進位碼，因此一律改名後才入庫；原始標題保留在逐字稿檔案的第一行與 README 目錄中，資訊不會遺失。
+逐字稿與其 CSV **同名**（僅副檔名不同），一眼即可對應。YouTube 原始檔名通常又長又含 emoji 與全形分隔符，在 Windows 上會觸發路徑長度問題、在 Git 輸出中也會被轉義成難讀的八進位碼，因此一律改名後才入庫；原始標題保留在逐字稿的 frontmatter `title` 欄位與 README 目錄中，資訊不會遺失。
+
+**檔名一律使用 ASCII**（英數字與連字號），理由同上。這條也適用於 `dashboard.base` 這類新增檔案——所以它不叫「總覽.base」。檔案*內容*用中文不受此限。
 
 ## 狀態管理：一切以 repo 檔案為準
 
@@ -60,7 +65,7 @@ transcripts/YYYY-MM-DD-主題英文名.md    對應的來源逐字稿
 
 1. 將選定的詞條輸出成 CSV 檔（格式見下方「CSV 格式規格」）。
 2. **同步更新 `README.md` 的目錄表格**，為這份 CSV 新增一列。此步驟不可省略，否則目錄會失效。
-3. **將逐字稿歸檔到 `transcripts/`**，改名為與 CSV 相同的檔名（副檔名 `.md`），第一行保留影片標題、第二行保留連結。使用者若是把逐字稿貼在對話中而非給檔案，一樣要建檔存入——之後補卡查原句全靠它。歸檔後刪除原本散落在根目錄的檔案（`git mv` 即可一次完成搬移與改名）。
+3. **將逐字稿歸檔到 `transcripts/`**，改名為與 CSV 相同的檔名（副檔名 `.md`），並在檔首寫入 YAML frontmatter（四個欄位，格式見下方「Obsidian Vault」）。使用者若是把逐字稿貼在對話中而非給檔案，一樣要建檔存入——之後補卡查原句全靠它。歸檔後刪除原本散落在根目錄的檔案（`git mv` 即可一次完成搬移與改名）。
 4. 若使用者尚未提供該支影片的標題與連結，主動向他索取，不要留白或自行臆測。
 
 ### 補卡：追加詞條到既有 CSV
@@ -82,7 +87,7 @@ transcripts/YYYY-MM-DD-主題英文名.md    對應的來源逐字稿
 
 ## CSV 格式規格
 
-- 檔名：`YYYY-MM-DD-主題英文名.csv`（日期用當天日期，如 `2026-08-20-airport-english.csv`）
+- 路徑與檔名：`cards/YYYY-MM-DD-主題英文名.csv`（日期用當天日期，如 `cards/2026-08-20-airport-english.csv`）。CSV 一律放在 `cards/`，不放根目錄——Obsidian 開不了 CSV，散在根目錄會把 vault 的檔案總管洗版。
 - 編碼：UTF-8
 - 檔案開頭兩行固定為：
 
@@ -131,7 +136,61 @@ transcripts/YYYY-MM-DD-主題英文名.md    對應的來源逐字稿
 
 - 日期與 CSV 檔名開頭的日期一致。
 - 影片標題與連結由使用者提供，不可自行推測。
-- CSV 檔案欄位使用 Markdown 相對連結，例如 `[2026-08-20-airport-english.csv](2026-08-20-airport-english.csv)`。
-- 卡片數為 CSV 中的字卡列數，即總行數扣掉開頭兩行標頭。可用 `grep -c '^"' 檔名.csv` 取得。
+- CSV 檔案欄位使用 Markdown 相對連結，例如 `[2026-08-20-airport-english.csv](cards/2026-08-20-airport-english.csv)`（顯示文字不含 `cards/`，連結路徑含）。
+- 卡片數為 CSV 中的字卡列數，即總行數扣掉開頭兩行標頭。可用 `grep -c '^"' cards/檔名.csv` 取得。
 
 何時改為獨立檔案：當目錄累積到約 40–50 筆以上，或需要增加分類、學習進度等欄位而使表格過寬時，再將目錄搬到獨立的 `INDEX.md`，並於 README 保留連結指向它。在那之前維持現狀。
+
+### 雙索引分工
+
+`dashboard.base` 看起來像第二份目錄，但它**不牴觸**上面「不另開 INDEX.md」的原則——因為它不需要人維護：
+
+| | `README.md` 目錄表 | `dashboard.base` |
+|---|---|---|
+| 面向 | GitHub 網頁 | Obsidian |
+| 維護方式 | **手動**，出卡與補卡時同步更新 | **自動**，讀 `transcripts/` 的 frontmatter |
+| 卡片數 | 有，且為**唯一權威來源** | 無（Bases 讀不到 CSV 行數） |
+
+「不另開 INDEX.md」擋的是「多一處要**同步維護**的地方」。`dashboard.base` 零維護成本，故不在此列。**但不要把卡片數搬進 frontmatter 讓它顯示**——那會讓它退化成第二個要手動同步的地方，正是本原則要防的事。
+
+## Obsidian Vault
+
+本 repo 的根目錄**同時就是 Obsidian vault 的根目錄**，不另建 vault 資料夾。用 Obsidian 的「開啟資料夾作為儲存庫」直接指向本 repo 即可。用途定位為**閱讀與檢視**（讀逐字稿、翻索引、搜尋查字），不在 Obsidian 裡做字卡編輯——字卡的唯一產出格式仍是 `cards/` 底下的 CSV。
+
+### 逐字稿的 frontmatter
+
+`transcripts/*.md` 檔首一律寫入以下四個欄位：
+
+```yaml
+---
+title: "影片完整標題（去掉結尾的 - YouTube）"
+url: https://www.youtube.com/watch?v=XXXXXXXXXXX
+date: YYYY-MM-DD
+topic: 主題中文名
+---
+```
+
+- `title` 加雙引號：標題常含 emoji 與全形分隔符 `｜`，引號起來最保險。內容須與 README 目錄表的「影片標題」欄位一字不差。
+- frontmatter 之後空一行，接原本的時間戳 bullet list。**不再另寫 H1 標題與裸 URL 行**——那些資訊已在 frontmatter，重複寫就是同一份資料存兩處。
+- GitHub 會把 YAML frontmatter 渲染成表格，所以改用 frontmatter 不會讓 GitHub 端少看到東西。
+
+**刻意不放的兩個欄位，請勿好心加回去：**
+
+- **卡片數**：會隨補卡變動，放進來就成了 README 之外第二個要手動同步的地方。唯一權威來源是 README 目錄表。
+- **`csv:` 路徑**：逐字稿與 CSV 依規格同名，路徑可直接推導（`transcripts/X.md` ↔ `cards/X.csv`），記下來是冗餘。
+
+### `.obsidian/` 的版控界線
+
+採**白名單制**：`.gitignore` 先以 `.obsidian/*` 全部排除，再逐項 `!` 放行共用設定。理由是新版 Obsidian 隨時會新增狀態檔，白名單制預設擋掉、黑名單制預設放行——前者出錯只是少同步一個設定，後者出錯是把逐次變動的 UI 狀態推上 git，多電腦必衝突。
+
+此規則與使用者另外兩個 vault（`grammar-in-charts`、`java-se-17-technical-guide`）完全一致，跨專案只需記一種心智模型。
+
+### `dashboard.base`
+
+Obsidian 核心 Bases 功能產生的自動索引表，語法要點（已對 Obsidian 1.12.7 驗證）：
+
+- `sort` 的條目是 `property` + `direction`，`direction` **只接受大寫** `ASC` / `DESC`。
+- `order` 是欄位顯示順序（陣列），與 `sort` 是兩回事。
+- frontmatter 欄位以 `note.` 前綴引用（`note.date`），檔案內建屬性用 `file.` 前綴（`file.name`）。
+
+Bases 是核心外掛（Obsidian 1.9+ 內建、預設啟用），**不依賴 Dataview 等社群外掛**。若在某台電腦上 `dashboard.base` 打不開，先確認「設定 → 核心外掛 → Bases」是開啟的（`core-plugins.json` 依白名單制不進版控，故各機獨立）。

@@ -1,0 +1,30 @@
+# Obsidian 端的自動索引：讀 transcripts/ 底下每份逐字稿的 frontmatter。
+# 新增逐字稿即自動出現在表格中，不需手動維護。
+# 卡片數刻意不列：Bases 只能讀 markdown frontmatter，無法計算 CSV 行數；
+# 硬要顯示就得把數字寫進 frontmatter，變成第二個要手動同步的地方。卡片數看 README.md。
+filters:
+  and:
+    - file.inFolder("transcripts")
+properties:
+  note.date:
+    displayName: 日期
+  note.topic:
+    displayName: 主題
+  note.title:
+    displayName: 影片標題
+  note.url:
+    displayName: 連結
+  file.name:
+    displayName: 檔名（與 CSV 同名）
+views:
+  - type: table
+    name: 全部影片
+    order:
+      - note.date
+      - note.topic
+      - note.title
+      - note.url
+      - file.name
+    sort:
+      - property: note.date
+        direction: DESC
