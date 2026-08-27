@@ -2,7 +2,7 @@
 
 從英文聽力影片的逐字稿中整理中難度字彙，製作成可匯入 Anki 的字卡。
 
-製作流程與 CSV 格式規格記錄於 [CLAUDE.md](CLAUDE.md)。
+核心規格記錄於 [CLAUDE.md](CLAUDE.md)，各動作規則與 CSV 格式規格在 [rules/](rules/)。
 
 ## 目錄
 
