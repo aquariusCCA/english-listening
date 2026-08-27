@@ -2,23 +2,9 @@
 
 從英文聽力影片的逐字稿中整理中難度字彙，製作成可匯入 Anki 的字卡。
 
-核心規格記錄於 [CLAUDE.md](CLAUDE.md)，各動作規則與 CSV 格式規格在 [rules/](rules/)。
-
 ## 製卡流程
 
-字卡由 [Claude Code](https://claude.com/claude-code) 依 [rules/](rules/) 的規則產出。在本資料夾開啟 Claude Code 後，用以下指令操作：
-
-| 指令 | 用途 |
-|---|---|
-| `/pick` | 從逐字稿挑出中難度字彙並列表，停下等你回覆要收錄的編號 |
-| `/cards` | 依你挑的編號產出 CSV、更新本頁目錄、歸檔逐字稿 |
-| `/add` | 補卡：直接指名漏掉的字，追加到既有 CSV |
-| `/recheck` | 補卡：重掃逐字稿，只列出尚未收錄的字讓你挑 |
-| `/end` | 收尾：commit 並 push |
-
-一般流程是給主題名稱與逐字稿後 `/pick` → 回覆編號（如 `2, 5, 9`）→ `/cards`。複習時發現漏字，再用 `/add` 或 `/recheck` 追加到原本那份 CSV，重新匯入 Anki 即可，複習進度不受影響（見下方「匯入 Anki 的方式」）。
-
-指令不是必須的——直接把逐字稿貼進對話說要挑字，一樣會依規則走。
+字卡由 [Claude Code](https://claude.com/claude-code) 產出：在本資料夾開啟 Claude Code，給它主題名稱與逐字稿，挑完字即可出卡。可用的動作指令一覽見 [CLAUDE.md](CLAUDE.md) 的「動作選單」；各動作的詳細規則與 CSV 格式規格在 [rules/](rules/)。
 
 ## 目錄
 
