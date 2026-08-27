@@ -17,7 +17,6 @@
 - 主流程是 `/pick` 挑字 → 使用者回覆編號 → `/cards` 出卡；複習後發現漏字才走 `/add` 或 `/recheck`。
 - **規則本體在 `rules/`**，本檔只留每個 session 都用得到的核心；執行動作時再讀對應規則檔。`.claude/commands/` 內的指令檔只是薄指標，指令檔與本檔都不重複規則內容——改規則只需改 `rules/` 一處。
 - 共用規格檔，由動作規則檔引用：rules/csv-format.md（CSV 格式與卡片背面模板）、rules/readme-index.md（README 目錄表規格與雙索引分工）、rules/obsidian.md（vault 整合、逐字稿 frontmatter、dashboard.base 語法）。維護 README 目錄、逐字稿或 Obsidian 設定前，先讀對應規格檔。
-- 跨檔引用規則檔的小節時用名稱、不用編號——編號會因增刪位移而無聲指錯。
 - 指令不是必要入口：使用者未下指令但意圖明確時（例如直接貼上逐字稿），依對應規則檔執行即可，不必要求他先打指令。
 
 ## 檔案結構
@@ -25,7 +24,7 @@
 ```
 README.md                             目錄索引（專案入口，GitHub 首頁會直接顯示）
 CLAUDE.md                             本檔：核心規格（動作選單、狀態管理、Git）
-rules/                                規則本體：動作規則與共用規格（見「動作選單」）
+rules/                                規則本體：動作規則、共用規格與維護清單（見「動作選單」）
 dashboard.base                        Obsidian 端的自動索引
 .gitignore                            白名單制排除 .obsidian/ 易變檔
 cards/YYYY-MM-DD-主題英文名.csv        Anki 字卡
@@ -51,3 +50,7 @@ transcripts/YYYY-MM-DD-主題英文名.md   對應的來源逐字稿
 - **收尾 `git commit` + `git push`**：未 push 的 commit 對其他電腦等於不存在。使用者已授權收尾時主動 commit + push，無需逐次確認。
 - 尚未設定 remote 時只 commit，並提醒使用者設定 remote。
 - Commit message 一律用繁體中文，寫明「改了什麼、為什麼」。
+
+## 規則維護
+
+修改本檔、`rules/` 或 `.claude/commands/` 的指令檔前，先讀 rules/maintenance.md 的檢查清單再動手。
