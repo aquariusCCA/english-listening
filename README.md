@@ -10,7 +10,7 @@
 
 | 日期 | 主題 | 影片標題 | 連結 | CSV 檔案 | 卡片數 |
 |---|---|---|---|---|---:|
-| 2026-08-18 | 餐廳英文 | 🎧保母級聽力訓練｜輕鬆掌握餐廳對話，提升英語自信｜餐廳英文｜進步神速的英文訓練方法｜零基礎學英文｜輕鬆學英文｜一小時聽英文｜English Listening｜One Hour English | [YouTube](https://www.youtube.com/watch?v=muGybHP7eVs) | [2026-08-18-restaurant-english.csv](cards/2026-08-18-restaurant-english.csv) | 92 |
+| 2026-08-18 | 餐廳英文 | 🎧保母級聽力訓練｜輕鬆掌握餐廳對話，提升英語自信｜餐廳英文｜進步神速的英文訓練方法｜零基礎學英文｜輕鬆學英文｜一小時聽英文｜English Listening｜One Hour English | [YouTube](https://www.youtube.com/watch?v=muGybHP7eVs) | [2026-08-18-restaurant-english.csv](cards/2026-08-18-restaurant-english.csv) | 105 |
 
 ## 在 Obsidian 中閱讀
 
