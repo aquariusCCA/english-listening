@@ -8,16 +8,15 @@
 
 | 指令 | 動作 | 規則檔 |
 |---|---|---|
-| `/pick` | 從逐字稿挑出中難度字彙，列表後停下等挑選 | rules/pick.md |
+| `/pick` | 從逐字稿挑中難度字彙，列表後停下等挑選 | rules/pick.md |
 | `/cards` | 依挑選編號出 CSV、更新 README 目錄、歸檔逐字稿 | rules/cards.md |
-| `/add` | 補卡：使用者指名詞條，直接追加到既有 CSV | rules/patch.md |
+| `/add` | 補卡：指名詞條，直接追加到既有 CSV | rules/patch.md |
 | `/recheck` | 補卡：重掃逐字稿，只列尚未收錄的詞條 | rules/patch.md |
 | `/end` | 收尾：commit + push | 本檔〈Git 工作流程〉 |
 
-- 主流程是 `/pick` 挑字 → 使用者回覆編號 → `/cards` 出卡；複習後發現漏字才走 `/add` 或 `/recheck`。
-- **規則本體在 `rules/`**，本檔只留每個 session 都用得到的核心；執行動作時再讀對應規則檔。`.claude/commands/` 內的指令檔只是薄指標，指令檔與本檔都不重複規則內容——改規則只需改 `rules/` 一處。
-- 共用規格檔，由動作規則檔引用：rules/csv-format.md（CSV 格式與卡片背面模板）、rules/readme-index.md（README 目錄表規格與雙索引分工）、rules/obsidian.md（vault 整合、逐字稿 frontmatter、dashboard.base 語法）。維護 README 目錄、逐字稿或 Obsidian 設定前，先讀對應規格檔。
-- 指令不是必要入口：使用者未下指令但意圖明確時（例如直接貼上逐字稿），依對應規則檔執行即可，不必要求他先打指令。
+主流程 `/pick` → 使用者回覆編號 → `/cards`；複習後發現漏字才走 `/add` 或 `/recheck`。**執行動作前先讀對應規則檔**，本檔不重複規則內容。動作規則會再引用三份共用規格：rules/csv-format.md（CSV 與卡背模板）、rules/readme-index.md（README 目錄表）、rules/obsidian.md（vault 與 frontmatter）。
+
+指令不是必要入口——使用者未下指令但意圖明確時（例如直接貼上逐字稿），依對應規則檔執行即可。
 
 ## 檔案結構
 
