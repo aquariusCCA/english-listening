@@ -6,13 +6,13 @@
 
 ## 動作選單
 
-| 指令 | 動作 | 規則檔 |
-|---|---|---|
-| `/pick` | 從逐字稿挑中難度字彙，列表後停下等挑選 | rules/pick.md |
-| `/cards` | 依挑選編號出 CSV、更新 README 目錄、歸檔逐字稿 | rules/cards.md |
-| `/add` | 補卡：指名詞條，直接追加到既有 CSV | rules/patch.md |
-| `/recheck` | 補卡：重掃逐字稿，只列尚未收錄的詞條 | rules/patch.md |
-| `/end` | 收尾：commit + push | 本檔〈Git 工作流程〉 |
+| 指令         | 動作                            | 規則檔            |
+| ---------- | ----------------------------- | -------------- |
+| `/pick`    | 從逐字稿挑中難度字彙，列表後停下等挑選           | rules/pick.md  |
+| `/cards`   | 依挑選編號出 CSV、更新 README 目錄、歸檔逐字稿 | rules/cards.md |
+| `/add`     | 補卡：指名詞條，直接追加到既有 CSV           | rules/patch.md |
+| `/recheck` | 補卡：重掃逐字稿，只列尚未收錄的詞條            | rules/patch.md |
+| `/end`     | 收尾：commit + push              | 本檔〈Git 工作流程〉   |
 
 主流程 `/pick` → 使用者回覆編號 → `/cards`；複習後發現漏字才走 `/add` 或 `/recheck`。**執行動作前先讀對應規則檔**，本檔不重複規則內容。動作規則會再引用三份共用規格：rules/csv-format.md（CSV 與卡背模板）、rules/readme-index.md（README 目錄表）、rules/obsidian.md（vault 與 frontmatter）。
 
